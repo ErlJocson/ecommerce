@@ -1,0 +1,11 @@
+from django.db import models
+
+# Create your models here.
+class product(models.Model):
+    # name
+    # details
+    # price
+    # date
+    # image
+    # stock
+    pass
