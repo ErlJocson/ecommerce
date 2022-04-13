@@ -5,8 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Commerce | {{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="stylesheet" href="{% static 'navigation.css' %}" />
   </head>
   <body>
+    <nav>
+      <a href="{% url 'home' %}" class="nav-brand">onstore</a>
+      <div class="nav-items">
+        <a href="{% url 'store' %}">store</a>
+        <a href="{% url 'order' %}">orders</a>
+        <a href="#">logout</a>
+      </div>
+      <div class="burger-button" onclick="burger('burger')">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="burger" id="burger">
+        <a href="{% url 'store' %}">store</a>
+        <a href="{% url 'order' %}">orders</a>
+        <a href="#">logout</a>
+      </div>
+    </nav>
     {% block content %} {% endblock %}
+    <script src="{% static 'js/revealButtons.js' %}"></script>
   </body>
 </html>
