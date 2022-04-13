@@ -5,11 +5,11 @@
     {% csrf_token %}
     <div>
       <label for="">Username</label>
-      <input type="text" />
+      <input type="text" name="username" required />
     </div>
     <div>
       <label for="">Password</label>
-      <input type="password" />
+      <input type="password" name="password" required />
     </div>
     <input type="submit" class="submit-button" value="login" />
   </form>
