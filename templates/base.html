@@ -8,14 +8,20 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'index.css' %}" />
     <link rel="stylesheet" href="{% static 'navigation.css' %}" />
+    <link rel="stylesheet" href="{% static 'auth-form.css' %}" />
   </head>
   <body>
     <nav>
       <a href="{% url 'home' %}" class="nav-brand">onstore</a>
       <div class="nav-items">
+        {% if request.user.is_authenticated %}
         <a href="{% url 'store' %}">store</a>
         <a href="{% url 'order' %}">orders</a>
         <a href="#">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">login</a>
+        <a href="{% url 'register' %}">register</a>
+        {% endif %}
       </div>
       <div class="burger-button" onclick="burger('burger')">
         <div></div>
@@ -23,9 +29,14 @@
         <div></div>
       </div>
       <div class="burger" id="burger">
+        {% if request.user.is_authenticated %}
         <a href="{% url 'store' %}">store</a>
         <a href="{% url 'order' %}">orders</a>
         <a href="#">logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">login</a>
+        <a href="{% url 'register' %}">register</a>
+        {% endif %}
       </div>
     </nav>
     {% block content %} {% endblock %}
