@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'index.css' %}" />
     <link rel="stylesheet" href="{% static 'navigation.css' %}" />
     <link rel="stylesheet" href="{% static 'auth-form.css' %}" />
+    <link rel="stylesheet" href="{% static 'products.css' %}" />
     <style>
       .alert-warning {
         margin: 0;
@@ -63,7 +64,9 @@
         {% endif %}
       </div>
     </nav>
-    {% block content %} {% endblock %}
+    <div style="margin: 10px auto; width: 90%">
+      {% block content %} {% endblock %}
+    </div>
     <script src="{% static 'js/revealButtons.js' %}"></script>
   </body>
 </html>
