@@ -6,11 +6,12 @@
     <div class="card-header">{{ product.name }}</div>
     <div class="details">
       <img
-        src="{{ product.image }}"
+        src="{{ product.image.url }}"
         alt="Not available"
         height="188px"
         width="188px"
       />
+      <p>{{ product.price }}</p>
       <a href="#">Order now!</a>
     </div>
   </div>

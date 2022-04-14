@@ -127,7 +127,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOTS = 'uploads/'
+MEDIA_ROOTS =  os.path.join(BASE_DIR, 'img')
+
+MEDIA_URL = '/img/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

@@ -3,7 +3,6 @@ from django.shortcuts import render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from ecommerce.settings import BASE_DIR
 
 def home_view(request):
     products = Product.objects.all()
@@ -16,11 +15,12 @@ def home_view(request):
 
 @login_required
 def store_view(request):
-    store = Product.objects.filter(id=request.user.id)
+    store = Product.objects.all()
     if not store:
         messages.warning(request, 'You are not selling anything.')
     return render(request, "store_view.html", {
         "title":"Store",
+        "store":store,
     })
 
 @login_required
