@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="product-container">
+  <img src="{{ item.image.url }}" alt="" />
+  <div>
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.details }}</p>
+    <div class="span-container">
+      <span><strong>Date posted:</strong>{{ item.date }}</span>
+      <span><strong>Stocks: </strong> {{ item.stock }} </span>
+      <span
+        ><strong>Seller:</strong>{{ item.seller.first_name }}
+        <!--  -->
+        {{ item.seller.last_name }}</span
+      >
+      <a href="{% url 'order_now' id=item.id %}">Order now!</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

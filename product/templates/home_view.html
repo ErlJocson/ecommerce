@@ -12,7 +12,7 @@
         width="188px"
       />
       <p>{{ product.price }}</p>
-      <a href="#">Order now!</a>
+      <a href="{% url 'product' id=product.id %}">Order now!</a>
     </div>
   </div>
   {% endfor %}

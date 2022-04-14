@@ -1,1 +1,2 @@
-
+- Need to subtract 1 from stock after ordering
+- remove item if stock is zero

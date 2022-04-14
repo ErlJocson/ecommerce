@@ -28,18 +28,19 @@ def register_view(request):
         confirm_password = request.POST['confirm_password']
 
         if password == confirm_password:
-            user = get_object_or_404(User, username=username)
-            if not user:
-                new_user = User.objects.create(
+            try:
+                user = User.objects.create_user(
                     username=username,
                     email=email,
                     first_name=first_name,
                     last_name=last_name,
                     password=password,
                 )
-                new_user.save()
-            else:
-                return redirect('login')
+                user.save()
+                login(request, user)
+                return redirect('home')
+            except:
+                messages.warning(request, 'There was an error!')
         messages.warning(request, 'Password do not match!')
     return render(request, "register_view.html", {
         "title":"Register"
