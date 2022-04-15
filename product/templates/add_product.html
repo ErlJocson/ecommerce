@@ -5,23 +5,23 @@
     {% csrf_token %}
     <div>
       <label for="">Product name</label>
-      <input type="text" name="name" />
+      <input type="text" name="name" required />
     </div>
     <div>
       <label for="">Price</label>
-      <input type="number" name="price" />
+      <input type="number" name="price" min="0" required />
     </div>
     <div>
       <label for="">Stock</label>
-      <input type="number" name="stock" />
+      <input type="number" name="stock" min="0" required />
     </div>
     <div>
       <label for="">Image</label>
-      <input type="file" name="image" />
+      <input type="file" name="image" required />
     </div>
     <div>
       <label for="">Details</label>
-      <input type="text" name="details" />
+      <input type="text" name="details" required />
     </div>
     <input type="submit" class="submit-button" value="add to market" />
   </form>

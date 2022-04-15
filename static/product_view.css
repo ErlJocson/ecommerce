@@ -23,3 +23,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.span-container a {
+  color: black;
+  font-weight: bold;
+}
+
+.span-container a:hover {
+  color: gray;
+}

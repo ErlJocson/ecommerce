@@ -8,7 +8,7 @@
   margin: 10px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgb(118, 118, 118);
+  box-shadow: var(--shadow);
 }
 
 .card-header {
@@ -31,8 +31,4 @@
 
 .details a:hover {
   color: gray;
-}
-
-.bg-blue {
-  background-color: rgb(112, 148, 204);
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="form-container">
+  <form method="post" class="auth-container">
+    {% csrf_token %}
+    <div>
+      <label for="">Name</label>
+      <input type="text" name="name" required value="{{ product.name }}" />
+    </div>
+    <div>
+      <label for="">Price</label>
+      <input
+        type="number"
+        min="0"
+        name="price"
+        value="{{product.price}}"
+        required
+      />
+    </div>
+    <div>
+      <label for="">Stock</label>
+      <input type="text" name="stock" value="{{ product.stock }}" required />
+    </div>
+    <div>
+      <label for="">Image</label>
+      <input type="file" name="image" required />
+    </div>
+    <div>
+      <label for="">Details</label>
+      <input type="text" name="detail" value="{{ product.details }}" required />
+    </div>
+    <input type="submit" class="submit-button" value="update" />
+  </form>
+</div>
+
+{% endblock %}

@@ -2,13 +2,14 @@
 
 <div class="card-container">
   {% for product in products %}
-  <div class="card bg-blue">
+  <div class="card">
     <div class="card-header">{{ product.name }}</div>
     <div class="details">
       <img
         src="{{ product.image.url }}"
         alt="Not available"
         height="188px"
+        style="margin: 10px 0"
         width="188px"
       />
       <p><strong>Price: </strong>{{ product.price }}</p>

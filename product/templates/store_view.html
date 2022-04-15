@@ -2,7 +2,7 @@
 
 <div class="card-container">
   {% for item in store %}
-  <div class="card bg-blue">
+  <div class="card">
     <div class="card-header">{{ item.name }}</div>
     <div class="details">
       <img
@@ -10,6 +10,7 @@
         alt="Not available"
         height="188px"
         width="188px"
+        style="margin: 10px 0"
       />
       <p><strong>Price:</strong> {{ item.price }}</p>
       {% if item.stock < 1 %}
@@ -18,6 +19,7 @@
       <p><strong>Stock: </strong>{{item.stock}}</p>
       {% endif %}
       <a href="{% url 'delete-product' id=item.id %}">Remove item</a>
+      <a href="{% url 'edit-product' id=item.id %}">Edit details</a>
     </div>
   </div>
   {% endfor %}

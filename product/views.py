@@ -1,4 +1,3 @@
-from itertools import product
 from django.shortcuts import redirect, render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
@@ -56,6 +55,7 @@ def order_now(request, id):
     messages.success(request, 'New order added.')
     return redirect('order')
 
+@login_required
 def add_product(request):
     if request.method == "POST":
         name    = request.POST['name']
@@ -88,11 +88,21 @@ def delete_product(request, id):
     return redirect('store')
 
 @login_required
-def cancel_order(request, id):
-    incrementStock = Product.objects.get(id=id)
+def cancel_order(request, product_id, order_id):
+    incrementStock = Product.objects.get(id=product_id)
     incrementStock.stock = incrementStock.stock + 1
     incrementStock.save()
-    orderToDelete = Order.objects.get(product=incrementStock)
+
+    orderToDelete = Order.objects.get(id=order_id)
     orderToDelete.delete()
+
     messages.success(request, 'Your order have been canceled.')
     return redirect('order')
+
+@login_required
+def edit_view(request, id):
+    productToEdit = Product.objects.get(id=id)
+    return render(request, 'edit_product_view.html', {
+        'title':'Edit product',
+        'product':productToEdit
+    })
