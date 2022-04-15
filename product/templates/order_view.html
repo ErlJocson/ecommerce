@@ -13,6 +13,7 @@
       />
       <p><strong>Price:</strong> {{ order.product.price }}</p>
       <a href="{% url 'product' id=order.product.id %}">View description</a>
+      <a href="{% url 'cancel-order' id=order.product.id %}">Cancel order</a>
     </div>
   </div>
   {% endfor %}

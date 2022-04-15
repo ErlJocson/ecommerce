@@ -1,4 +1,4 @@
-import os
+from itertools import product
 from django.shortcuts import redirect, render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
@@ -86,3 +86,13 @@ def delete_product(request, id):
     productToDelete.delete()
     messages.success(request, 'Product delete.')
     return redirect('store')
+
+@login_required
+def cancel_order(request, id):
+    incrementStock = Product.objects.get(id=id)
+    incrementStock.stock = incrementStock.stock + 1
+    incrementStock.save()
+    orderToDelete = Order.objects.get(product=incrementStock)
+    orderToDelete.delete()
+    messages.success(request, 'Your order have been canceled.')
+    return redirect('order')
