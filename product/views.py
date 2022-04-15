@@ -5,9 +5,14 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 def home_view(request):
-    products = Product.objects.filter(stock__gte = 1)
+    if request.user.is_authenticated:
+        products = Product.objects.exclude(seller=request.user).filter(stock__gte = 1)
+    else:
+        products = Product.objects.all()
+
     if not products:
         messages.warning(request, 'There are no items for sale.')
+        
     return render(request, "home_view.html", {
         "title":"Home",
         "products":products,
