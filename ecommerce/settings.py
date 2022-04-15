@@ -24,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i9o%_8nhu$=e^687l)0n)80b&hm0ida4vwr^yjcc&mz49+)v5('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['onstore-app.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -130,6 +129,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOTS =  os.path.join(BASE_DIR, 'img')
 
 MEDIA_URL = '/img/'
+
+STATIC_ROOT = 'static_root'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

@@ -107,6 +107,19 @@ def cancel_order(request, product_id, order_id):
 @login_required
 def edit_view(request, id):
     productToEdit = Product.objects.get(id=id)
+
+    if request.method == "POST":
+        name = request.POST['name']
+        price = request.POST['price']
+        stock = request.POST['stock']
+        details = request.POST['detail']
+        productToEdit.name = name
+        productToEdit.price = price
+        productToEdit.stock = stock
+        productToEdit.details = details
+        productToEdit.save()
+        messages.success(request, 'Details updated')
+        return redirect('store')
     return render(request, 'edit_product_view.html', {
         'title':'Edit product',
         'product':productToEdit
