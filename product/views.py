@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def home_view(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(stock__gte = 1)
     if not products:
         messages.warning(request, 'There are no items for sale.')
     return render(request, "home_view.html", {
@@ -43,6 +43,9 @@ def product_view(request, id):
 @login_required
 def order_now(request, id):
     productToAdd = Product.objects.get(id=id)
+    productToAdd.stock = productToAdd.stock - 1
+    productToAdd.save()
+
     orderToAdd = Order(
         product=productToAdd,
         user=request.user

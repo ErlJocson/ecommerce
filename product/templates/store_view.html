@@ -12,6 +12,11 @@
         width="188px"
       />
       <p><strong>Price:</strong> {{ item.price }}</p>
+      {% if item.stock < 1 %}
+      <p>Out of stock</p>
+      {% else %}
+      <p><strong>Stock: </strong>{{item.stock}}</p>
+      {% endif %}
     </div>
   </div>
   {% endfor %}
