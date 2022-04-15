@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="form-container">
+  <form method="post" class="auth-container">
+    {% csrf_token %}
+    <div>
+      <label for="">Product name</label>
+      <input type="text" name="name" />
+    </div>
+    <div>
+      <label for="">Price</label>
+      <input type="number" name="price" />
+    </div>
+    <div>
+      <label for="">Stock</label>
+      <input type="number" name="stock" />
+    </div>
+    <div>
+      <label for="">Image</label>
+      <input type="file" name="image" />
+    </div>
+    <div>
+      <label for="">Details</label>
+      <input type="text" name="details" />
+    </div>
+    <input type="submit" class="submit-button" />
+  </form>
+</div>
+
+{% endblock %}

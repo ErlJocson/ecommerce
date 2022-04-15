@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 def home_view(request):
     products = Product.objects.filter(stock__gte = 1)
@@ -53,3 +54,28 @@ def order_now(request, id):
     orderToAdd.save()
     messages.success(request, 'New order added.')
     return redirect('order')
+
+def add_product(request):
+    if request.method == "POST":
+        name    = request.POST['name']
+        details = request.POST['details']
+        price   = request.POST['price']
+        stock   = request.POST['stock']
+        image   = request.POST['image']
+        seller  = User.objects.get(id=request.user.id)
+
+        productToAdd = Product(
+            name = name,
+            details = details,
+            price = price,
+            stock = stock,
+            image = image,
+            seller = seller,
+        )
+        productToAdd.save() 
+        messages.success(request, 'Product added.')
+    else:
+        messages.warning(request, 'There was an error!')
+    return render(request, 'add_product.html', {
+        "title":"Add product"
+    })

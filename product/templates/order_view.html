@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<div>
+<div class="card-container">
   {% for order in orders %}
   <div class="card bg-blue">
     <div class="card-header">{{ order.product.name }}</div>
