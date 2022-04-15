@@ -74,8 +74,12 @@ def add_product(request):
         )
         productToAdd.save() 
         messages.success(request, 'Product added.')
-    else:
-        messages.warning(request, 'There was an error!')
     return render(request, 'add_product.html', {
         "title":"Add product"
     })
+
+
+# if os.path.exists("demofile.txt"):
+#   os.remove("demofile.txt")
+# else:
+#   print("The file does not exist")
