@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import redirect, render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
@@ -61,25 +62,27 @@ def add_product(request):
         details = request.POST['details']
         price   = request.POST['price']
         stock   = request.POST['stock']
-        image   = request.POST['image']
+        image   = request.FILES['image']
         seller  = User.objects.get(id=request.user.id)
 
         productToAdd = Product(
-            name = name,
+            name    = name,
             details = details,
-            price = price,
-            stock = stock,
-            image = image,
-            seller = seller,
+            price   = price,
+            stock   = stock,
+            image   = image,
+            seller  = seller,
         )
         productToAdd.save() 
         messages.success(request, 'Product added.')
+        return redirect('home')
     return render(request, 'add_product.html', {
         "title":"Add product"
     })
 
-
-# if os.path.exists("demofile.txt"):
-#   os.remove("demofile.txt")
-# else:
-#   print("The file does not exist")
+@login_required
+def delete_product(request, id):
+    productToDelete = Product.objects.get(id=id)
+    productToDelete.delete()
+    messages.success(request, 'Product delete.')
+    return redirect('store')

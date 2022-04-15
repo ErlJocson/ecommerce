@@ -4,6 +4,10 @@ from django.contrib.auth import authenticate, login, logout as django_logout
 from django.contrib import messages
 
 def login_view(request):
+    if request.user.is_authenticated:
+        messages.success(request, 'You are authenticated as ' + request.user.username)
+        return redirect('home')
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -18,6 +22,10 @@ def login_view(request):
     })
 
 def register_view(request):
+    if request.user.is_authenticated:
+        messages.success(request, 'You are authenticated as ' + request.user.username)
+        return redirect('home')
+        
     if request.method == "POST":
         username = request.POST['username']
         email = request.POST['email']

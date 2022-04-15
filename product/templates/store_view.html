@@ -17,6 +17,7 @@
       {% else %}
       <p><strong>Stock: </strong>{{item.stock}}</p>
       {% endif %}
+      <a href="{% url 'delete-product' id=item.id %}">Remove item</a>
     </div>
   </div>
   {% endfor %}

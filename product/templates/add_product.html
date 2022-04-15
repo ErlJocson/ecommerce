@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="form-container">
-  <form method="post" class="auth-container">
+  <form method="post" class="auth-container" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
       <label for="">Product name</label>
