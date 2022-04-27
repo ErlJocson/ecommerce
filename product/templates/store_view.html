@@ -6,7 +6,7 @@
     <div class="card-header">{{ item.name }}</div>
     <div class="details">
       <img
-        src="{{ item.image.name }}"
+        src="{{ MEDIA_URL }}{{ item.image.url }}"
         alt="Not available"
         height="188px"
         width="188px"
