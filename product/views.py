@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.shortcuts import redirect, render
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required
@@ -5,10 +6,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 def home_view(request):
-    if request.user.is_authenticated:
-        products = Product.objects.exclude(seller=request.user).filter(stock__gte = 1)
-    else:
-        products = Product.objects.all()
+    products = Product.objects.all()
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    products = Product.objects.filter(name__icontains=q)
 
     if not products:
         messages.warning(request, 'There are no items for sale.')
