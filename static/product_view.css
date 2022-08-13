@@ -22,11 +22,18 @@
 .span-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
 }
 
 .span-container a {
-  color: black;
+  color: white;
   font-weight: bold;
+  background-color: #002ead;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.5s;
 }
 
 .span-container a:hover {

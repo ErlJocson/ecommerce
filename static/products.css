@@ -21,12 +21,20 @@
 .details {
   margin: 6px;
   justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }
 
 .details a {
-  color: rgb(0, 0, 0);
-  font-weight: bolder;
-  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+  background-color: #002ead;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 6px;
+  transition: 0.5s;
 }
 
 .details a:hover {

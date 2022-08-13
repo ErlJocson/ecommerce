@@ -13,7 +13,9 @@
         <!--  -->
         {{ item.seller.last_name }}</span
       >
-      <a href="{% url 'order_now' id=item.id %}">Order now!</a>
+      <span>
+        <a href="{% url 'order_now' id=item.id %}">Order now!</a>
+      </span>
     </div>
   </div>
 </div>
