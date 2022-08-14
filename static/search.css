@@ -8,3 +8,11 @@
   border-radius: 10px;
   border: 1px solid gray;
 }
+
+@media screen and (max-width: 800px) {
+  .search-form {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}

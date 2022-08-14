@@ -8,9 +8,8 @@
       <img
         src="{{ MEDIA_URL }}{{ order.product.image.url }}"
         alt="Not available"
-        height="188px"
         style="margin: 10px 0"
-        width="188px"
+        class="product-img"
       />
       <p><strong>Price:</strong> {{ order.product.price }}</p>
       <a href="{% url 'product' id=order.product.id %}">View description</a>

@@ -19,11 +19,17 @@
 }
 
 .details {
-  margin: 6px;
+  /* margin: 6px; */
   justify-content: center;
   display: flex;
   text-align: center;
   flex-direction: column;
+  align-items: center;
+}
+
+.product-img {
+  width: 188px;
+  height: 188px;
 }
 
 .details a {
@@ -39,4 +45,28 @@
 
 .details a:hover {
   color: gray;
+}
+
+@media screen and (max-width: 720px) {
+  .card-container {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .card {
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-header {
+    font-size: 18px;
+  }
+
+  .product-img {
+    width: 144px;
+    height: 144px;
+  }
 }
